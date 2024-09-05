@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Users\cmcgr\RiderProjects\165dd6dd-578d-477f-91f3-06383ab32fa0\LongestSequence\Services\LongestSequenceService.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Text.RegularExpressions;
+
+namespace LongestSequence.Services;
+
+/// &lt;summary&gt;
+/// Service class to perform sequence operations
+/// &lt;/summary&gt;
+public class LongestSequenceService : ILongestSequenceService
+{
+    private readonly Regex _whiteSpaceRegex = new(@&quot;\s+&quot;);
+    private const string SingleSpace = &quot; &quot;;
+
+    /// &lt;summary&gt;
+    /// Return the longest uninterrupted sequence of integers from the input
+    /// &lt;/summary&gt;
+    public string GetLongestSequence(string? input)
+    {
+        if (string.IsNullOrWhiteSpace(input))
+        {
+            throw new ArgumentNullException(nameof(input));
+        }
+        
+        var formattedInput = FormatText(input);
+
+        var list = formattedInput.Split(SingleSpace).Select(int.Parse).ToList();
+
+        var prev = 0; 
+        
+        var currentSequence = new List&lt;int&gt;();
+        var longestSequence = new List&lt;int&gt;();
+        for (var i = 0 ; i &lt; list.Count ; i++)
+        {
+            var current = list[i];
+            var runHasEnded = current &lt; prev; 
+            if (!runHasEnded)
+            {
+                currentSequence.Add(current);
+
+                // If we are on the last element, ensure the longest sequence is set
+                if (i == list.Count - 1)
+                {
+                    if (currentSequence.Count &gt; longestSequence.Count)
+                    {
+                        longestSequence = currentSequence;                    
+                    }
+                }
+            }
+            else
+            {
+                // If the run of sequentially increasing integers has ended, update the longest sequence if this is strictly the longest one so far
+                if (currentSequence.Count &gt; longestSequence.Count)
+                {
+                    longestSequence = currentSequence;                    
+                }
+
+                currentSequence = [current];
+            }
+            
+            prev = current;
+        }
+        
+        return string.Join(SingleSpace, longestSequence);
+    }
+
+    /// &lt;summary&gt;
+    /// Ensure that the string is correctly formatted, and any duplicated white space is removed.
+    /// This should be expanded as required as user input can be full of formatting issues. 
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;input&quot;&gt;&lt;/param&gt;
+    /// &lt;returns&gt;&lt;/returns&gt;
+    private string FormatText(string? input)
+    {
+        return _whiteSpaceRegex.Replace(input, SingleSpace);
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[10,5,10,59,1],[17,5,17,6,1],[18,9,18,46,1],[19,9,19,10,1],[20,13,20,60,1],[23,9,23,48,1],[25,9,25,81,1],[27,9,27,22,1],[29,9,29,47,1],[30,9,30,47,1],[31,14,31,23,1],[31,26,31,40,1],[31,43,31,46,1],[32,9,32,10,1],[33,13,33,35,1],[34,13,34,46,1],[35,13,35,30,1],[36,13,36,14,1],[37,17,37,46,1],[40,17,40,41,1],[41,17,41,18,1],[42,21,42,71,1],[43,21,43,22,1],[44,25,44,59,1],[45,21,45,22,1],[46,17,46,18,1],[47,13,47,14,1],[49,13,49,14,1],[51,17,51,67,1],[52,17,52,18,1],[53,21,53,55,1],[54,17,54,18,1],[56,17,56,45,1],[57,13,57,14,1],[59,13,59,28,1],[60,9,60,10,1],[62,9,62,58,1],[63,5,63,6,1],[72,5,72,6,1],[73,9,73,61,1],[74,5,74,6,1]]);
+    </script>
+  </body>
+</html>

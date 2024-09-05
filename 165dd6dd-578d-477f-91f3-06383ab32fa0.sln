@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LongestSequence", "LongestSequence\LongestSequence.csproj", "{DE1C863F-D51C-4AED-A6D5-36EAEAE9143C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LongestSequenceServiceTests", "Tests\LongestSequenceServiceTests\LongestSequenceServiceTests.csproj", "{6EE0E79F-EDBD-44A3-9B03-811A53B6A039}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE1C863F-D51C-4AED-A6D5-36EAEAE9143C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE1C863F-D51C-4AED-A6D5-36EAEAE9143C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE1C863F-D51C-4AED-A6D5-36EAEAE9143C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE1C863F-D51C-4AED-A6D5-36EAEAE9143C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EE0E79F-EDBD-44A3-9B03-811A53B6A039}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EE0E79F-EDBD-44A3-9B03-811A53B6A039}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EE0E79F-EDBD-44A3-9B03-811A53B6A039}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EE0E79F-EDBD-44A3-9B03-811A53B6A039}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
